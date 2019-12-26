@@ -2,6 +2,7 @@ import indeed_web_scrape_script as iwss
 import time
 from bs4 import BeautifulSoup
 import requests
+import pandas as pd
 
 starting_url = 'https://www.indeed.com/jobs?q=data+science&l=Denver%2C+CO&limit=50&radius=25'
 start = [num for num in range(50, 251, 50)]
@@ -13,7 +14,22 @@ for i in start:
     base_url += page_num
     url_list.append(base_url)
 
+companies = []
+jobs = []
+locations = []
+
 for url in url_list:
     page = requests.get(url)
     soup = BeautifulSoup(page.text, features='html.parser')
-    job_temp, companies_temp, locations_temp = iwss.extract_title_company_location(soup)
+    jobs_temp, companies_temp, locations_temp = iwss.extract_title_company_location(soup)
+    companies.extend(companies_temp)
+    jobs.extend(jobs_temp)
+    locations.extend(locations_temp)
+    time.sleep(5)
+
+df = pd.DataFrame()
+df['Company_Name'] = companies
+df['Job_Title'] = jobs
+df['Location'] = locations
+
+print(df)
