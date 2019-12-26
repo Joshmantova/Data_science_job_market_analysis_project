@@ -1,6 +1,7 @@
 import indeed_web_scrape_script as iwss
 import time
 from bs4 import BeautifulSoup
+import requests
 
 starting_url = 'https://www.indeed.com/jobs?q=data+science&l=Denver%2C+CO&limit=50&radius=25'
 start = [num for num in range(50, 251, 50)]

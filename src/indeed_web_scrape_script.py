@@ -1,12 +1,5 @@
 import requests
 from bs4 import BeautifulSoup
-import pandas as pd
-import time
-
-URL = 'https://www.indeed.com/jobs?q=data+science&l=Denver%2C+CO#&start=10'
-
-page = requests.get(URL)
-soup = BeautifulSoup(page.text, features='html.parser')
 
 def extract_company_from_result(soup):
     companies = []
@@ -41,11 +34,3 @@ def extract_title_company_location(soup):
     companies = extract_company_from_result(soup)
     locations = extract_locations_from_results(soup)
     return jobs, companies, locations
-
-df = pd.DataFrame()
-
-jobs, companies, locations = extract_title_company_location(soup)
-
-df['Jobs'] = jobs
-df['Companies'] = companies
-df['Locations'] = locations
