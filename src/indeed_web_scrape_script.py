@@ -34,3 +34,6 @@ def extract_title_company_location(soup):
     companies = extract_company_from_result(soup)
     locations = extract_locations_from_results(soup)
     return jobs, companies, locations
+
+if __name__ == '__main__':
+    pass
