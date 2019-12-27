@@ -43,4 +43,3 @@ if __name__ == '__main__':
     df['Job_Title'] = jobs
     df['Location'] = locations
 
-print(df)
