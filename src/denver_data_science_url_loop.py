@@ -14,18 +14,13 @@ def get_url_list(starting_url):
         page_num = f'&start={i}'
         base_url += page_num
         url_list.append(base_url)
-    
     return url_list
 
-if __name__ == '__main__':
-
-    starting_url = 'https://www.indeed.com/jobs?q=data+science&l=Denver%2C+CO&limit=50&radius=25'
-
-    url_list = get_url_list(starting_url)
+def pull_jobs_comp_loc_allpages(url):
+    url_list = get_url_list(url)
     companies = []
     jobs = []
     locations = []
-
     for url in url_list:
         page = requests.get(url)
         soup = BeautifulSoup(page.text, features='html.parser')
@@ -34,7 +29,15 @@ if __name__ == '__main__':
         jobs.extend(jobs_temp)
         locations.extend(locations_temp)
         time.sleep(5)
+    return companies, jobs, locations
 
+if __name__ == '__main__':
+
+    starting_url = 'https://www.indeed.com/jobs?q=data+science&l=Denver%2C+CO&limit=50&radius=25'
+
+
+    companies, jobs, locations = pull_jobs_comp_loc_allpages(starting_url)
+    
     df = pd.DataFrame()
     df['Company_Name'] = companies
     df['Job_Title'] = jobs
