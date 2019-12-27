@@ -14,7 +14,6 @@ def extract_company_from_result(soup):
                 companies.append(span.text.strip())
     return companies
 
-
 def extract_job_title_from_result(soup): 
     jobs = []
     for div in soup.find_all(name='div', attrs={'class':'row'}):
@@ -35,5 +34,16 @@ def extract_title_company_location(soup):
     locations = extract_locations_from_results(soup)
     return jobs, companies, locations
 
+def get_last_page(URL):
+    page = requests.get(URL)
+    soup = BeautifulSoup(page.text, features='lxml')
+    pn_list = []
+    for pn in soup.find_all('span', attrs={'class': 'pn'}):
+        page_number = list(pn.text)
+        pn_list.append(page_number)
+    last_page = int(pn_list[-2][0])
+    return last_page
+
 if __name__ == '__main__':
     pass
+
