@@ -39,8 +39,6 @@ if __name__ == '__main__':
 
     companies, jobs, locations, easy_apply = pull_jobs_comp_loc_allpages(starting_url)
 
-    print(len(easy_apply), len(jobs))
-
     df = pd.DataFrame()
     df['Company_Name'] = companies
     df['Job_Title'] = jobs
