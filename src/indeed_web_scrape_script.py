@@ -20,7 +20,7 @@ def extract_job_title_from_result(soup):
         for a in div.find_all(name='a', attrs={'data-tn-element':'jobTitle'}):
             jobs.append(a['title'])
     return jobs
- 
+
 def extract_locations_from_results(soup):
     locations = []
     for div in soup.find_all('div', attrs={'class': 'recJobLoc'}):
@@ -51,7 +51,10 @@ def get_last_page(URL):
     for pn in soup.find_all('span', attrs={'class': 'pn'}):
         page_number = list(pn.text)
         pn_list.append(page_number)
-    last_page = int(pn_list[-2][0])
+    if len(pn_list[-2]) > 1:
+        last_page = int(pn_list[-2][0] + pn_list[-2][1])
+    else:
+        last_page = int(pn_list[-2][0])
     return last_page
 
 if __name__ == '__main__':

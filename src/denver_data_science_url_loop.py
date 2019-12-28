@@ -30,7 +30,7 @@ def pull_jobs_comp_loc_allpages(url):
         jobs.extend(jobs_temp)
         locations.extend(locations_temp)
         easy_apply.extend(easy_apply_temp)
-        time.sleep(5)
+        time.sleep(2)
     return companies, jobs, locations, easy_apply
 
 if __name__ == '__main__':
