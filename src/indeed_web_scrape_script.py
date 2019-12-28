@@ -51,7 +51,8 @@ def extract_easyapply_from_results(soup):
 def extract_url_from_results(soup):
     links = []
     final_links = []
-    for div in soup.find_all('div', attrs={'class': 'row'}):
+    # for div in soup.find_all('div', attrs={'class': 'row'}):
+    for div in soup.find_all('div', attrs={'class': 'title'}):
         for a in div.find_all('a', attrs={'target': '_blank'}):
             links.append(a['href'])
     
@@ -85,4 +86,8 @@ if __name__ == '__main__':
     URL = 'https://www.indeed.com/jobs?q=data+science&l=Denver,+CO&limit=50&radius=25'
     page = requests.get(URL)
     soup = BeautifulSoup(page.text, features='lxml')
-    print(extract_comprating_from_results(soup))
+    companies = extract_company_from_result(soup)
+    jobs = extract_job_title_from_result(soup)
+    urls = extract_url_from_results(soup)
+    print(f'Company len: {len(companies)}, jobs len: {len(jobs)}, url len: {len(urls)}')
+

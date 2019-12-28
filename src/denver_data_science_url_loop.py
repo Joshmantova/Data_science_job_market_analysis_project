@@ -50,12 +50,13 @@ if __name__ == '__main__':
 
     companies, jobs, locations, easy_apply, ratings, urls = pull_jobs_comp_loc_allpages(starting_url)
 
-    # df = pd.DataFrame()
-    # df['Company_Name'] = companies
-    # df['Job_Title'] = jobs
-    # df['Location'] = locations
-    # df['Easy_Apply'] = easy_apply
-    # df['Rating'] = ratings
-    # # df['URL'] = urls
+    df = pd.DataFrame()
+    df['Company_Name'] = companies
+    df['Job_Title'] = jobs
+    df['Location'] = locations
+    df['Easy_Apply'] = easy_apply
+    df['Rating'] = ratings
+    df['URL'] = urls
 
-    print(f'Company len: {len(companies)}, jobs len: {len(jobs)}, url len: {len(urls)}')
+    print(df.iloc[0:5, :])
+    # print(f'Company len: {len(companies)}, jobs len: {len(jobs)}, url len: {len(urls)}')
