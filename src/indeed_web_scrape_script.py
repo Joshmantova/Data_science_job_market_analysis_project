@@ -53,7 +53,8 @@ def extract_title_company_location_ea(soup):
     companies = extract_company_from_result(soup)
     locations = extract_locations_from_results(soup)
     easy_apply = extract_easyapply_from_results(soup)
-    return jobs, companies, locations, easy_apply
+    ratings = extract_comprating_from_results(soup)
+    return jobs, companies, locations, easy_apply, ratings
 
 def get_last_page(URL):
     page = requests.get(URL)
