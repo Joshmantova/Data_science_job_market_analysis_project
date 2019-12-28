@@ -90,4 +90,3 @@ if __name__ == '__main__':
     jobs = extract_job_title_from_result(soup)
     urls = extract_url_from_results(soup)
     print(f'Company len: {len(companies)}, jobs len: {len(jobs)}, url len: {len(urls)}')
-

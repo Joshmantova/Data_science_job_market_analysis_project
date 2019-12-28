@@ -59,4 +59,5 @@ if __name__ == '__main__':
     df['URL'] = urls
 
     print(df.iloc[0:5, :])
+    print(df['URL'])
     # print(f'Company len: {len(companies)}, jobs len: {len(jobs)}, url len: {len(urls)}')
