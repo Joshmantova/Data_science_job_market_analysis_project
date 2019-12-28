@@ -11,7 +11,7 @@ if __name__ == '__main__':
 
     for state in list_of_locations:
         starting_url = f'https://www.indeed.com/jobs?q=data+science&l={state}&limit=50&radius=25'
-        companies, jobs, locations, easy_apply = ddsul.pull_jobs_comp_loc_allpages(starting_url)
+        companies, jobs, locations, easy_apply, ratings = ddsul.pull_jobs_comp_loc_allpages(starting_url)
         df_name = f'df_{state}'
         df_name = pd.DataFrame()
         df_name['Companies'] = companies

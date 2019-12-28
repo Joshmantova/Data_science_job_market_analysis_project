@@ -48,6 +48,18 @@ def extract_easyapply_from_results(soup):
             easy_apply.append('Not Easy Apply')
     return easy_apply
 
+def extract_url_from_results(soup):
+    links = []
+    final_links = []
+    for div in soup.find_all('div', attrs={'class': 'row'}):
+        for a in div.find_all('a', attrs={'target': '_blank'}):
+            links.append(a['href'])
+    
+    for link in links:
+        final_link = 'indeed.com' + link
+        final_links.append(final_link)
+    return final_links
+
 def extract_title_company_location_ea(soup):
     jobs = extract_job_title_from_result(soup)
     companies = extract_company_from_result(soup)
