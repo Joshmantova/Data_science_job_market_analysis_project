@@ -28,6 +28,17 @@ def extract_locations_from_results(soup):
         locations.append(loc)
     return locations
 
+def extract_comprating_from_results(soup):
+    ratings = []
+    for div in soup.find_all('div', attrs={'class': 'sjcl'}):
+        span = div.find('span', attrs={'class': 'ratingsContent'})
+        if span:
+            rating = span.text.strip()
+            ratings.append(float(rating))
+        else:
+            ratings.append(None)
+    return ratings
+
 def extract_easyapply_from_results(soup):
     easy_apply = []
     for div in soup.find_all('div', attrs={'class': 'row'}):
@@ -37,7 +48,7 @@ def extract_easyapply_from_results(soup):
             easy_apply.append('Not Easy Apply')
     return easy_apply
 
-def extract_title_company_location(soup):
+def extract_title_company_location_ea(soup):
     jobs = extract_job_title_from_result(soup)
     companies = extract_company_from_result(soup)
     locations = extract_locations_from_results(soup)
@@ -61,6 +72,4 @@ if __name__ == '__main__':
     URL = 'https://www.indeed.com/jobs?q=data+science&l=Denver,+CO&limit=50&radius=25'
     page = requests.get(URL)
     soup = BeautifulSoup(page.text, features='lxml')
-    print(len(extract_easyapply_from_results(soup)))
-    print(len(extract_locations_from_results(soup)))
-    print(len(extract_job_title_from_result(soup)))
+    print(extract_comprating_from_results(soup))

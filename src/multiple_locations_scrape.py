@@ -7,7 +7,7 @@ import pandas as pd
 
 if __name__ == '__main__':
 
-    list_of_locations = ['CO', 'CA', 'NY', 'WA', 'MT', 'NV', 'UT', 'FL']
+    list_of_locations = ['CO', 'CA', 'NY', 'WA', 'UT', 'FL']
 
     for state in list_of_locations:
         starting_url = f'https://www.indeed.com/jobs?q=data+science&l={state}&limit=50&radius=25'
@@ -19,6 +19,8 @@ if __name__ == '__main__':
         df_name['Locations'] = locations
         df_name['easy_apply'] = easy_apply
         print(df_name)
+    
+    print('DONE!!!!')
 
     # print(f'The last past of this search is page #: {iwss.get_last_page(starting_url)}')
 
