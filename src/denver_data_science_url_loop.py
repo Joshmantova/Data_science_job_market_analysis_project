@@ -21,25 +21,30 @@ def pull_jobs_comp_loc_allpages(url):
     companies = []
     jobs = []
     locations = []
+    easy_apply = []
     for url in url_list:
         page = requests.get(url)
         soup = BeautifulSoup(page.text, features='html.parser')
-        jobs_temp, companies_temp, locations_temp = iwss.extract_title_company_location(soup)
+        jobs_temp, companies_temp, locations_temp, easy_apply_temp = iwss.extract_title_company_location(soup)
         companies.extend(companies_temp)
         jobs.extend(jobs_temp)
         locations.extend(locations_temp)
+        easy_apply.extend(easy_apply_temp)
         time.sleep(5)
-    return companies, jobs, locations
+    return companies, jobs, locations, easy_apply
 
 if __name__ == '__main__':
 
     starting_url = 'https://www.indeed.com/jobs?q=data+science&l=Denver%2C+CO&limit=50&radius=25'
 
+    companies, jobs, locations, easy_apply = pull_jobs_comp_loc_allpages(starting_url)
 
-    companies, jobs, locations = pull_jobs_comp_loc_allpages(starting_url)
-    
+    print(len(easy_apply), len(jobs))
+
     df = pd.DataFrame()
     df['Company_Name'] = companies
     df['Job_Title'] = jobs
     df['Location'] = locations
+    df['Easy_Apply'] = easy_apply
 
+    print(df)

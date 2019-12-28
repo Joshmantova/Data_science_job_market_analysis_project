@@ -30,10 +30,10 @@ def extract_locations_from_results(soup):
 
 def extract_easyapply_from_results(soup):
     easy_apply = []
-    for div in soup.find_all('div', attrs={'data-tn-component': 'organicJob'}):
+    for div in soup.find_all('div', attrs={'class': 'row'}):
         if div.find('span', attrs={'class': 'iaLabel'}):
             easy_apply.append('Easy Apply')
-        else:
+        elif div.find('span', attrs={'class': 'iaLabel'}) == None:
             easy_apply.append('Not Easy Apply')
     return easy_apply
 
@@ -41,7 +41,8 @@ def extract_title_company_location(soup):
     jobs = extract_job_title_from_result(soup)
     companies = extract_company_from_result(soup)
     locations = extract_locations_from_results(soup)
-    return jobs, companies, locations
+    easy_apply = extract_easyapply_from_results(soup)
+    return jobs, companies, locations, easy_apply
 
 def get_last_page(URL):
     page = requests.get(URL)
@@ -57,5 +58,6 @@ if __name__ == '__main__':
     URL = 'https://www.indeed.com/jobs?q=data+science&l=Denver,+CO&limit=50&radius=25'
     page = requests.get(URL)
     soup = BeautifulSoup(page.text, features='lxml')
-    print(extract_easyapply_from_results(soup))
-
+    print(len(extract_easyapply_from_results(soup)))
+    print(len(extract_locations_from_results(soup)))
+    print(len(extract_job_title_from_result(soup)))
