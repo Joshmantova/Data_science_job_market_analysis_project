@@ -35,7 +35,7 @@ def pull_jobs_comp_loc_allpages(url):
 
 if __name__ == '__main__':
 
-    starting_url = 'https://www.indeed.com/jobs?q=data+science&l=Denver%2C+CO&limit=50&radius=25'
+    starting_url = 'https://www.indeed.com/jobs?q=data+science&l=CO&limit=50&radius=25'
 
     companies, jobs, locations, easy_apply = pull_jobs_comp_loc_allpages(starting_url)
 
