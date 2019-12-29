@@ -11,13 +11,15 @@ if __name__ == '__main__':
 
     for state in list_of_locations:
         starting_url = f'https://www.indeed.com/jobs?q=data+science&l={state}&limit=50&radius=25'
-        companies, jobs, locations, easy_apply, ratings = ddsul.pull_all_allpages(starting_url)
+        companies, jobs, locations, easy_apply, ratings, summaries = ddsul.pull_all_allpages(starting_url)
         df_name = f'df_{state}'
         df_name = pd.DataFrame()
         df_name['Companies'] = companies
         df_name['Jobs'] = jobs
         df_name['Locations'] = locations
-        df_name['easy_apply'] = easy_apply
+        df_name['Easy_Apply'] = easy_apply
+        df_name['Rating'] = ratings
+        df_name['Summary'] = summaries
         print(df_name)
     
     print('DONE!!!!')
