@@ -55,11 +55,21 @@ def extract_url_from_results(soup):
     for div in soup.find_all('div', attrs={'class': 'title'}):
         for a in div.find_all('a', attrs={'target': '_blank'}):
             links.append(a['href'])
-    
+
     for link in links:
         final_link = 'indeed.com' + link
         final_links.append(final_link)
     return final_links
+
+def extract_summary_from_results(soup):
+    summary_list = []
+    for div in soup.find_all('div', attrs={'class': 'row'}):
+        summary_div = div.find('div', attrs={'class': 'summary'})
+        summary_list_temp = str()
+        for li in summary_div.find_all('li'):
+            summary_list_temp += f' {li.text.strip()}'
+        summary_list.append(summary_list_temp)
+    return summary_list
 
 def extract_title_company_location_ea(soup):
     jobs = extract_job_title_from_result(soup)
@@ -67,7 +77,8 @@ def extract_title_company_location_ea(soup):
     locations = extract_locations_from_results(soup)
     easy_apply = extract_easyapply_from_results(soup)
     ratings = extract_comprating_from_results(soup)
-    return jobs, companies, locations, easy_apply, ratings
+    summary = extract_summary_from_results(soup)
+    return jobs, companies, locations, easy_apply, ratings, summary
 
 def get_last_page(URL):
     page = requests.get(URL)
@@ -89,4 +100,5 @@ if __name__ == '__main__':
     companies = extract_company_from_result(soup)
     jobs = extract_job_title_from_result(soup)
     urls = extract_url_from_results(soup)
-    print(f'Company len: {len(companies)}, jobs len: {len(jobs)}, url len: {len(urls)}')
+    summaries = extract_summary_from_results(soup)
+    print(f'Company len: {len(companies)}, jobs len: {len(jobs)}, url len: {len(urls)} summary len: {len(summaries)}')
