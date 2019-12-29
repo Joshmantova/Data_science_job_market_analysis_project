@@ -16,7 +16,7 @@ def get_url_list(starting_url):
         url_list.append(base_url)
     return url_list
 
-def pull_jobs_comp_loc_allpages(url):
+def pull_all_allpages(url):
     url_list = get_url_list(url)
     companies = []
     jobs = []
@@ -35,7 +35,6 @@ def pull_jobs_comp_loc_allpages(url):
         ratings_temp = iwss.extract_comprating_from_results(soup)
         url_temp = iwss.extract_url_from_results(soup)
         summary_temp = iwss.extract_summary_from_results(soup)
-        # jobs_temp, companies_temp, locations_temp, easy_apply_temp, ratings_temp = iwss.extract_title_company_location_ea(soup)
         
         companies.extend(companies_temp)
         jobs.extend(jobs_temp)
@@ -51,7 +50,7 @@ if __name__ == '__main__':
 
     starting_url = 'https://www.indeed.com/jobs?q=data+science&l=CO&limit=50&radius=25'
 
-    companies, jobs, locations, easy_apply, ratings, urls, summaries = pull_jobs_comp_loc_allpages(starting_url)
+    companies, jobs, locations, easy_apply, ratings, urls, summaries = pull_all_allpages(starting_url)
 
     df = pd.DataFrame()
     df['Company_Name'] = companies
@@ -62,4 +61,5 @@ if __name__ == '__main__':
     df['URL'] = urls
     df['Summary'] = summaries
 
-    df.to_csv('example.csv')
+    print(df)
+    # df.to_csv('example.csv')
