@@ -94,7 +94,7 @@ def get_last_page(URL):
     return last_page
 
 if __name__ == '__main__':
-    URL = 'https://www.indeed.com/jobs?q=data+science&l=Denver,+CO&limit=50&radius=25'
+    URL = 'https://www.indeed.com/jobs?q=data+science&l=NY&limit=50&radius=25'
     page = requests.get(URL)
     soup = BeautifulSoup(page.text, features='lxml')
     companies = extract_company_from_result(soup)

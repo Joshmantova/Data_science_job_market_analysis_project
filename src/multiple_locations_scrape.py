@@ -8,19 +8,22 @@ import pandas as pd
 if __name__ == '__main__':
 
     list_of_locations = ['CO', 'CA', 'NY', 'WA', 'UT', 'FL']
-
+    counter = 1
     for state in list_of_locations:
+        print(f'{counter}/{len(list_of_locations)}: {state} Working')
         starting_url = f'https://www.indeed.com/jobs?q=data+science&l={state}&limit=50&radius=25'
-        companies, jobs, locations, easy_apply, ratings, summaries = ddsul.pull_all_allpages(starting_url)
-        df_name = f'df_{state}'
-        df_name = pd.DataFrame()
-        df_name['Companies'] = companies
-        df_name['Jobs'] = jobs
-        df_name['Locations'] = locations
-        df_name['Easy_Apply'] = easy_apply
-        df_name['Rating'] = ratings
-        df_name['Summary'] = summaries
-        print(df_name)
+        companies, jobs, locations, easy_apply, ratings, urls, summaries = ddsul.pull_all_allpages(starting_url)
+        df = pd.DataFrame()
+        df['Companies'] = companies
+        df['Jobs'] = jobs
+        df['Locations'] = locations
+        df['Easy_Apply'] = easy_apply
+        df['Rating'] = ratings
+        df['Summary'] = summaries
+        df.to_csv(f'df_{state}')
+        print(f'{counter}/{len(list_of_locations)}: {state} Complete!')
+        counter += 1
+
     
     print('DONE!!!!')
 
