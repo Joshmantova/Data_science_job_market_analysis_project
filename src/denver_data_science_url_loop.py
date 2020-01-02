@@ -5,6 +5,13 @@ import requests
 import pandas as pd
 
 def get_url_list(starting_url):
+    """
+    Outputs list of URLs for each available page of the search
+
+    :params: starting_url: URL of first page of the search
+
+    :returns: list of URLs for each page of the search
+    """
     last_page = iwss.get_last_page(starting_url)
     ending_range = (last_page - 1) * 50
     start = [num for num in range(50, ending_range + 1, 50)]
@@ -17,6 +24,14 @@ def get_url_list(starting_url):
     return url_list
 
 def pull_all_allpages(url):
+    """
+    Pulls all information from entire Indeed search
+
+    :params: URL from initial search page
+
+    :returns: six lists: companies, jobs, locations, easy_apply, ratings,
+    urls, summaries
+    """
     url_list = get_url_list(url)
     companies = []
     jobs = []
