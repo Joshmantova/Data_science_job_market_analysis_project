@@ -2,6 +2,14 @@ import requests
 from bs4 import BeautifulSoup
 
 def extract_company_from_result(soup):
+    """
+    Outputs list of company names for each job posting from Indeed
+
+    :params: soup object from Indeed search
+    
+    :returns: list of cleaned company names
+    """
+
     companies = []
     for div in soup.find_all(name='div', attrs={'class': 'row'}):
         company = div.find_all(name='span', attrs={'class': 'company'})
@@ -15,6 +23,14 @@ def extract_company_from_result(soup):
     return companies
 
 def extract_job_title_from_result(soup): 
+    """
+    Outputs list of job titles for each posting from Indeed
+
+    :params: soup object from Indeed search
+
+    :returns: list of cleaned job titles
+    """
+
     jobs = []
     for div in soup.find_all(name='div', attrs={'class':'row'}):
         for a in div.find_all(name='a', attrs={'data-tn-element':'jobTitle'}):
@@ -22,6 +38,14 @@ def extract_job_title_from_result(soup):
     return jobs
 
 def extract_locations_from_results(soup):
+    """
+    Outputs list of locations for each job posting from Indeed
+
+    :params: soup object from Indeed search
+
+    :returns: list of cleaned locations for each job posting
+    """
+
     locations = []
     for div in soup.find_all('div', attrs={'class': 'recJobLoc'}):
         loc = div['data-rc-loc']
@@ -29,6 +53,15 @@ def extract_locations_from_results(soup):
     return locations
 
 def extract_comprating_from_results(soup):
+    """
+    Outputs list of company ratings for each job posting from Indeed.
+    If no company rating is available, returns None
+
+    :params: soup object from Indeed search
+
+    :returns: list of company ratings (floats) for each job posting
+    """
+
     ratings = []
     for div in soup.find_all('div', attrs={'class': 'sjcl'}):
         span = div.find('span', attrs={'class': 'ratingsContent'})
@@ -40,6 +73,15 @@ def extract_comprating_from_results(soup):
     return ratings
 
 def extract_easyapply_from_results(soup):
+    """
+    Outputs list consisting of whether or not the job can be easily applied for
+
+    :params: soup object from Indeed search
+
+    :returns: list consisting of whether or not the job can be easily applied for
+    Easy Apply if the job is easy apply and Not Easy Apply if it is not
+    """
+
     easy_apply = []
     for div in soup.find_all('div', attrs={'class': 'row'}):
         if div.find('span', attrs={'class': 'iaLabel'}):
@@ -49,6 +91,14 @@ def extract_easyapply_from_results(soup):
     return easy_apply
 
 def extract_url_from_results(soup):
+    """
+    Outputs list of urls for each job posting
+
+    :params: soup object from Indeed search
+
+    :returns: list of urls for each job posting
+    """
+
     links = []
     final_links = []
     # for div in soup.find_all('div', attrs={'class': 'row'}):
@@ -62,6 +112,16 @@ def extract_url_from_results(soup):
     return final_links
 
 def extract_summary_from_results(soup):
+    """
+    Outputs list of summaries for each job posting. Only includes the brief
+    summary available on the search result page. Does not include the complete
+    job summary.
+
+    :params: soup object from Indeed search
+
+    :returns: list of cleaned summaries for each job posting
+    """
+
     summary_list = []
     for div in soup.find_all('div', attrs={'class': 'row'}):
         summary_div = div.find('div', attrs={'class': 'summary'})
@@ -72,6 +132,16 @@ def extract_summary_from_results(soup):
     return summary_list
 
 def extract_title_company_location_ea(soup):
+    """
+    Outputs jobs, company names, locations, easy apply or not, company ratings,
+    and summaries from Indeed search page
+
+    :params: soup object from Indeed search
+
+    :returns: six lists: job titles, company names, locations, easy apply or not,
+    company ratings, and search page summaries
+    """
+
     jobs = extract_job_title_from_result(soup)
     companies = extract_company_from_result(soup)
     locations = extract_locations_from_results(soup)
@@ -81,6 +151,15 @@ def extract_title_company_location_ea(soup):
     return jobs, companies, locations, easy_apply, ratings, summary
 
 def get_last_page(URL):
+    """
+    Outputs the last page number of a given search. Allows automation
+    of checking how many pages a search yields
+
+    :params: URL of Indeed search
+
+    :returns: Last page number of search
+    """
+
     page = requests.get(URL)
     soup = BeautifulSoup(page.text, features='lxml')
     pn_list = []
