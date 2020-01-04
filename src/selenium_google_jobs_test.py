@@ -25,20 +25,36 @@ def scroll_to_bottom(driver):
             break
         last_height = new_height
 
-jobs = driver.find_elements_by_class_name('BjJfJf')
-scroll_to_bottom(driver)
-job_list = []
+jobs = driver.find_elements_by_xpath("//h2[@class='n2yttb']")
+# print(job)
 for job in jobs:
-    job_list.append(job.text)
-    time.sleep(.5)
+    time.sleep(5)
+    job_title = job.text
+    print(job_title)
+
+
+# jobs = driver.find_elements_by_class_name('PaEvOc')
+# # scroll_to_bottom(driver)
+# job_list = []
+# for job in jobs:
+#     job.click()
+#     # job_list.append(job.text.strip())
+#     time.sleep(2)
+#     # job_title = driver.find_element_by_xpath('//h2[contains(@jsname, "SBkjJd")]')
+#     # job_title = driver.find_element_by_xpath("//h2[@jsname='SBkjJd']")
+#     job_title_h2 = driver.find_element_by_class_name('n2yttb')
+#     job_title = job_title_h2.text
+#     print(job_title)
 
 # driver.execute_script('window.scrollTo()')
 # driver.
 
-print(job_list)
+# print(job_list)
 
 # driver.close()
 
 '''
 "BjJfJf cPd5d gsrt"
+class="PaEvOc
+class="n2yttb" 
 '''
