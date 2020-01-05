@@ -16,9 +16,9 @@ def see_more_jobs(driver, num_times=40):
     if num_times == 0:
         return None
     for _ in range(num_times):
-        # driver.execute_script("window.scrollTo(0, document.body.scrollHeight);")
         time.sleep(.5)
         see_more_jobs = driver.find_element_by_class_name('see-more-jobs')
+        driver.execute_script('return arguments[0].scrollIntoView();', see_more_jobs)
         see_more_jobs.click()
         time.sleep(3)
 
@@ -38,7 +38,7 @@ def scrape_all_from_linkedin(search_result_url, driver):
     num_applicants: list of number of applicants for each job \n
     descriptions: list of descriptions of each job
     """
-    delays = [2, 4, 6, 2, 2, 19, 5]
+    delays = np.arange(2,7)
     delay = np.random.choice(delays)
     jobs = driver.find_elements_by_class_name('result-card__full-card-link')
 
@@ -59,10 +59,11 @@ def scrape_all_from_linkedin(search_result_url, driver):
         #     time.sleep(20)
         #     job.click()
         #     print('Continuing')
+        time.sleep(delay)
         job_title_h2 = driver.find_element_by_class_name('topcard__title').text
         company_name_a = driver.find_element_by_class_name('topcard__org-name-link').text
-        time.sleep(delay)
         locations_span = driver.find_element_by_xpath("//span[contains(@class, 'topcard__flavor--bullet')]").text
+        time.sleep(delay)
         try: 
             # if more than 25 people applied, the number of applicants is located here
             num_applicants_span = driver.find_element_by_xpath("//span[contains(@class, 'topcard__flavor--bullet') and contains(@class, 'num-applicants__caption')]").text
@@ -70,7 +71,6 @@ def scrape_all_from_linkedin(search_result_url, driver):
             # if less than 25 people applied, the number of applicants is located here
             num_applicants_span = driver.find_element_by_class_name('num-applicants__caption').text
         description = driver.find_element_by_class_name('description__text').text
-        time.sleep(delay)
         job_titles.append(job_title_h2)
         company_names.append(company_name_a)
         locations.append(locations_span)
