@@ -15,6 +15,14 @@ def junior_or_not(x):
     else:
         return 0
 
+def senior_or_junior_or_not(x):
+    if 'Junior' in x or 'Jr' in x:
+        return 0
+    elif 'Senior' in x or 'Sr' in x:
+        return 1
+    else:
+        return 2
+
 def get_num_applicants_int(x):
     num = str()
     for elem in x:
@@ -49,6 +57,7 @@ if __name__ == '__main__':
     df_all['Length_of_Description'] = df_all['Description'].apply(get_length_of_description)
     df_all['Senior'] = df_all['Job_Title'].apply(senior_or_not)
     df_all['Junior'] = df_all['Job_Title'].apply(junior_or_not)
+    df_all['Senior_Junior_or_not'] = df_all['Job_Title'].apply(senior_or_junior_or_not)
     df_all['num_applicants'] = df_all['Number_of_Applicants'].apply(get_num_applicants_int)
     df_all['State'] = df_all['Location'].apply(get_state)
 

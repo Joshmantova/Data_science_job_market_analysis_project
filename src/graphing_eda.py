@@ -1,21 +1,21 @@
 import pandas as pd
 import matplotlib.pyplot as plt
+from numpy.polynomial.polynomial import polyfit
 plt.style.use('fivethirtyeight')
 
 df_all = pd.read_csv('../Datasets/df_all_linkedin.csv')
 
-len_descrip_sen = df_all.groupby('Senior').mean()['Length_of_Description'].values
-senior_or_not = df_all.groupby('Senior').mean()['Length_of_Description'].index
+len_descrip_sen = df_all.groupby('Senior_Junior_or_not').mean()['Length_of_Description'].values
+senior_junior_or_not = df_all.groupby('Senior_Junior_or_not').mean()['Length_of_Description'].index
 
 fig, ax = plt.subplots(figsize = (13,10))
 
-ax.bar(senior_or_not, len_descrip_sen)
-ax.set_xlabel('Senior Included in Job title or not')
+ax.bar(senior_junior_or_not, len_descrip_sen)
+ax.set_xlabel('Senior / Junior Included in Job title or not')
 ax.set_ylabel('Length of Description')
-ax.set_xticks([0, 1])
-ax.set_xticklabels(['Not Senior', 'Senior'])
-ax.set_title('Length of Description for Linkedin Jobs That Include Senior in Title or Not')
-
+ax.set_xticks([0, 1, 2])
+ax.set_xticklabels(['Junior', 'Senior', 'Neither'])
+ax.set_title('Length of Description for Linkedin Jobs That Include Senior / Junior in Title or Not')
 plt.tight_layout()
 plt.savefig('../imgs/linkedin_sen_or_not_length_descrip.png')
 
@@ -24,12 +24,14 @@ plt.savefig('../imgs/linkedin_sen_or_not_length_descrip.png')
 number_applied = df_all['num_applicants'].values
 length_of_descrip = df_all['Length_of_Description'].values
 
-fig, ax = plt.subplots(figsize=(12,12))
+fig, ax = plt.subplots(figsize=(15,12))
 
 ax.scatter(number_applied, length_of_descrip)
 ax.set_xlabel('Number of Applicants')
 ax.set_ylabel('Length of Description')
 ax.set_title('Relation Between Number of Applicants and Length of Description on Linkedin')
+b, m = polyfit(number_applied, length_of_descrip, 1)
+ax.plot(number_applied, b + m * number_applied, '-', linewidth=2, color='k')
 plt.savefig('../imgs/linkedin_num_applicants_len_descrip.png')
 
 #
@@ -74,6 +76,7 @@ def graph_top15_companies(state_id, ax):
     df_all_state = df_all[df_all['State'] == state_id]
     companies_state = df_all_state['Company'].value_counts().index[:10]
     companies_state = list(companies_state)
+
     for idx, comp in enumerate(companies_state):
         if len(comp) >= 20:
             comp_temp = comp.split()
@@ -90,6 +93,7 @@ def graph_top15_companies(state_id, ax):
                 comp_ac = 'Research Foundation of NYU'
             elif comp_ac == 'PNNL-P':
                 comp_ac = 'PNNL'
+
             companies_state[idx] = comp_ac
         
     companies_state = companies_state[::-1]
@@ -112,4 +116,3 @@ for loc, ax in zip(list_of_locs, axs.flatten()):
 
 plt.tight_layout()
 plt.savefig('../imgs/linkedin_top_companies_num_job_postings_per_state.png')
-

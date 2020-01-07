@@ -17,7 +17,7 @@ if __name__ == '__main__':
         print(f'Starting to scrape {loc} jobs from Linkedin')
         search_result_url = f"https://www.linkedin.com/jobs/search?keywords=Data%20Science&location={loc}&trk=guest_job_search_jobs-search-bar_search-submit&redirect=false&position=1&pageNum=0"
         driver.get(search_result_url)
-        sljt.see_more_jobs(driver, num_times=40)
+        sljt.see_more_jobs(driver, num_times=2)
 
         time.sleep(delay)
 
