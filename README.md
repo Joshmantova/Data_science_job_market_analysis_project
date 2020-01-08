@@ -38,10 +38,14 @@ In order to scrape Linkedin, the script first would navigate to the search resul
 # Analysis:
 
 ## Linkedin
-The first variable of interest was the length of the job description. I wanted to see if jobs that included senior in the title had longer or shorter descriptions than jobs that included junior in the title or jobs that didn't include either in the title.
+The first variable of interest was the length of the job description. I wanted to see if jobs that included senior (or Sr.) in the title had longer or shorter descriptions than jobs that included junior (or Jr.) in the title or jobs that didn't include either in the title.
 
 ![](imgs/linkedin_sen_or_not_length_descrip.png)
 
 As is shown in the graph, junior jobs had on average the shortest length of description. This was followed by senior level jobs and the longest descriptions tended to be jobs that didn't include senior or junior in the title. The graph shows that these three categories of jobs have different lengths of descriptions, but the question still remains as to whether these differences are big enough to be considered 'real' differences. In other words, we still don't know if these differences are real or if they are likely due to error.
 
-A one way ANOVA was used to test the hypothesis that there are differences in average description length between the three groups (senior, junior, and neither). The omnibus ANOVA model was non-significant, *F*(2, 3148) = 1.47, *p* = 0.23.
+A one way ANOVA was used to test the hypothesis that there are differences in average description length between the three groups (senior, junior, and neither). The omnibus ANOVA model was non-significant indicating that any differences are likely due to chance, *F*(2, 3148) = 1.47, *p* = 0.23. The sample size is so large that it's surprising that these differences are non-significant.
+
+It looks like although the total sample size is large, there were only a small portion of jobs that included either junior or senior in the job title. Senior level jobs represented 16.32% of the jobs, junior level jobs represented 0.41% of the jobs, and 83.27% of jobs didn't include either word in the title. This might explain why the differences found were non-significant; because there wasn't a large enough portion of the jobs that included senior or junior in the title. What about the difference between senior level jobs and all other jobs? Because about 16% of jobs were senior, the sample size may be large enough to observe a significant difference.
+
+The hypothesis that there was a differnece in average length of description between senior jobs and non-senior jobs was tested using an indendent samples t-test. The two means were not significantly different, *t*(3148) = 1.47, *p* = 0.14.
