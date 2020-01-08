@@ -87,7 +87,7 @@ plt.savefig('../imgs/linkedin_top_companies_longest_descriptions.png')
 
 #
 
-def graph_top15_companies(state_id, ax):
+def graph_top10_companies(state_id, ax):
     df_all_state = df_all[df_all['State'] == state_id]
     companies_state = df_all_state['Company'].value_counts().index[:10]
     companies_state = list(companies_state)
@@ -127,7 +127,7 @@ list_of_locs = ['CO', 'CA', 'FL', 'NY', 'UT', 'WA']
 fig, axs = plt.subplots(3, 2, figsize=(30,15))
 
 for loc, ax in zip(list_of_locs, axs.flatten()):
-    graph_top15_companies(loc, ax)
+    graph_top10_companies(loc, ax)
 
 plt.tight_layout()
 plt.savefig('../imgs/linkedin_top_companies_num_job_postings_per_state.png')
