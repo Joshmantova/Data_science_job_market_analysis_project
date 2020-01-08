@@ -6,6 +6,7 @@ According to Glassdoor.com, a reputable job review website, data science has bee
 # The Data:
 Using selenium and beautiful soup, two popular python packages for web scraping and web automation, two datasets were scraped; one from Indeed.com (n = 3969) and another from Linkedin.com (n = 3150).
 
+### Features from each dataset:
 | Indeed job features    | Linkedin job features  |
 | ---------------------- | ---------------------- |
 | Company name           | Company name           |
