@@ -22,5 +22,7 @@ Scraping job features from Indeed was much simpler than scraping Linkedin. Job s
 
 Features of interest were obtained by finding the HTML tag that contained the feature and searching through that tag for the attribute that represented the feature. Example code for finding the location of a job on Indeed is:
 
-```for div in soup.find_all('div', attrs={'class': 'recJobLoc'}):
-        loc = div['data-rc-loc']```
+```
+for div in soup.find_all('div', attrs={'class': 'recJobLoc'}):
+        loc = div['data-rc-loc']
+```
