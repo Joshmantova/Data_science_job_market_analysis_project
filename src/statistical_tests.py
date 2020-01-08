@@ -40,6 +40,8 @@ len_descrip = df_all['Length_of_Description'].values
 # I think it's weighing too heavily on < 25 applicants. Very small effect size
 
 r = stats.pearsonr(num_applicants, len_descrip)
+dof = df_all.shape[0] - 2
+# print(f'Degrees of freedom is: {dof}')
 # print(r)
 
 # Taking out the < 25 and > 200s and redoing the correlation. Correlation is no longer significant. Probably due to
@@ -50,6 +52,8 @@ num_applicants_cleaned = df_all_applicants_cleaned['num_applicants'].values
 len_descrip_cleaned = df_all_applicants_cleaned['Length_of_Description'].values
 
 r_cleaned = stats.pearsonr(num_applicants_cleaned, len_descrip_cleaned)
+dof = df_all_applicants_cleaned.shape[0] - 2
+# print(f'Degrees of freedom is: {dof}')
 # print(r_cleaned)
 
 # Comparing the length of description for junior jobs vs jobs that don't mention senior or junior. Nonsignificant.
@@ -67,5 +71,5 @@ senior_or_not_not = senior_or_not_not_df['Length_of_Description'].values
 
 t_test2 = stats.ttest_ind(senior_or_not_senior, senior_or_not_not)
 dof = df_all.shape[0] - 2
-print(f'Degrees of freedom is: {dof}')
-print(t_test2)
+# print(f'Degrees of freedom is: {dof}')
+# print(t_test2)

@@ -31,7 +31,9 @@ ax.set_xlabel('Number of Applicants')
 ax.set_ylabel('Length of Description')
 ax.set_title('Relation Between Number of Applicants and Length of Description on Linkedin')
 b, m = polyfit(number_applied, length_of_descrip, 1)
-ax.plot(number_applied, b + m * number_applied, '-', linewidth=2, color='k')
+ax.plot(number_applied, b + m * number_applied, '-', linewidth=2, color='k', label='Line of Best Fit')
+plt.legend()
+plt.tight_layout()
 plt.savefig('../imgs/linkedin_num_applicants_len_descrip.png')
 
 #
@@ -46,7 +48,9 @@ ax.set_xlabel('Number of Applicants')
 ax.set_ylabel('Length of Description')
 ax.set_title('Relation Between Number of Applicants and Length of Description on Linkedin Cleaned')
 b, m = polyfit(num_applied_clean, length_of_descrip, 1)
-ax.plot(num_applied_clean, b + m * num_applied_clean, '-', linewidth=2, color='k')
+ax.plot(num_applied_clean, b + m * num_applied_clean, '-', linewidth=2, color='k', label='Line of Best Fit')
+plt.legend()
+plt.tight_layout()
 plt.savefig('../imgs/linkedin_num_applicants_len_descrip_cleaned.png')
 
 #
