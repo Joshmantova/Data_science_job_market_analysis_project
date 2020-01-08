@@ -16,7 +16,7 @@ Using selenium and beautiful soup, two popular python packages for web scraping 
 | Company rating         | Full job description   |
 | Job summary            |                        |
 
- Six states were selected as states that are hubs for data science jobs.
+ For both Indeed and Linkedin, six states were selected as states that are hubs for data science jobs. Data was scraped from each of these states.
 
  | States        |
  | ------------- |
@@ -82,3 +82,9 @@ It looks like many of these long job postings were posted by the US government (
 Finally, I wanted to investigate which companies tended to have the largest number of data science jobs. These are companies that should be targetted if one is looking to get a job in data science due to the number of available positions.
 
 ![](imgs/linkedin_num_postings_for_top_companies.png)
+
+Across all states, Amazon had the largest number of jobs by quite a long shot. The runner up, The Job Network, is not a company hiring but rather another job searching website. I'm sure that Linkedin probably isn't too happy with another job searching site posting on their site. However, it seems like The Job Network has a large number of data science jobs.
+
+Looking across all states is nice for someone who doesn't know where they want to work but what about the people who have a state targetted and want to know what the job market is looking like in that state? Let's create a series of graphs that look at the top 10 companies that had posted the largest number of jobs for each of the six states.
+
+![](imgs/linkedin_top_companies_num_job_postings_per_state.png)
