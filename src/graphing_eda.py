@@ -36,6 +36,21 @@ plt.savefig('../imgs/linkedin_num_applicants_len_descrip.png')
 
 #
 
+df_cleaned_applicants = df_all[(df_all['num_applicants'] != 20) & (df_all['num_applicants'] != 200)]
+num_applied_clean = df_cleaned_applicants['num_applicants'].values
+length_of_descrip = df_cleaned_applicants['Length_of_Description'].values
+fig, ax = plt.subplots(figsize=(15,12))
+
+ax.scatter(num_applied_clean, length_of_descrip)
+ax.set_xlabel('Number of Applicants')
+ax.set_ylabel('Length of Description')
+ax.set_title('Relation Between Number of Applicants and Length of Description on Linkedin Cleaned')
+b, m = polyfit(num_applied_clean, length_of_descrip, 1)
+ax.plot(num_applied_clean, b + m * num_applied_clean, '-', linewidth=2, color='k')
+plt.savefig('../imgs/linkedin_num_applicants_len_descrip_cleaned.png')
+
+#
+
 companies = df_all['Company'].value_counts().index[:15]
 companies = companies[::-1]
 

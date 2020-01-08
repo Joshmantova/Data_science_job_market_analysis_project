@@ -38,6 +38,16 @@ len_descrip = df_all['Length_of_Description'].values
 r = stats.pearsonr(num_applicants, len_descrip)
 # print(r)
 
+# Taking out the < 25 and > 200s and redoing the correlation. Correlation is no longer significant. Probably due to
+# Sample size issues. Effect size is ultra small too but still negative.
+
+df_all_applicants_cleaned = df_all[(df_all['num_applicants'] != 20) & (df_all['num_applicants'] != 200)]
+num_applicants_cleaned = df_all_applicants_cleaned['num_applicants'].values
+len_descrip_cleaned = df_all_applicants_cleaned['Length_of_Description'].values
+
+r_cleaned = stats.pearsonr(num_applicants_cleaned, len_descrip_cleaned)
+# print(r_cleaned)
+
 # Comparing the length of description for senior jobs vs jobs that don't mention senior or junior. Nonsignificant.
 
 t_test = stats.ttest_ind(senior, neither)
