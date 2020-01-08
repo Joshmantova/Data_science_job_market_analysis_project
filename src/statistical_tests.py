@@ -16,18 +16,22 @@ neither = neither_df['Length_of_Description'].values
 
 # Proportion of each group. Small number of Junior jobs and most (88%) are neither senior nor junior
 
+df_between = 3 - 1
+df_within = df_all.shape[0] - df_between
+print(f'degrees of freedom: ({df_between}, {df_within})')
+
 prop_senior = len(senior) / df_all.shape[0]
 prop_junior = len(junior) / df_all.shape[0]
 prop_neither = len(neither) / df_all.shape[0]
 
-# print(f'The percentage of Senior level jobs is: {prop_senior * 100:0.2f}')
-# print(f'The percentage of Junior level jobs is: {(prop_junior * 100):0.2f}')
-# print(f"The percentage of jobs that didn't mention Junior or Senior in the title is: {prop_neither * 100:0.2f}")
+print(f'The percentage of Senior level jobs is: {prop_senior * 100:0.2f}')
+print(f'The percentage of Junior level jobs is: {(prop_junior * 100):0.2f}')
+print(f"The percentage of jobs that didn't mention Junior or Senior in the title is: {prop_neither * 100:0.2f}")
 
 # Nonsignificant ANOVA
 
 anova = stats.f_oneway(senior, junior, neither)
-# print(anova)
+print(anova)
 
 num_applicants = df_all['num_applicants'].values
 len_descrip = df_all['Length_of_Description'].values
