@@ -4,7 +4,7 @@
 According to Glassdoor.com, a reputable job review website, data science has been the best job in America for several years (source: https://www.glassdoor.com/List/Best-Jobs-in-America-LST_KQ0,20.htm). The pay is great, the satisfaction rating is high, and the technology is cutting edge. It almost sounds too good to be true. Although there have been several analyses on the data science job market(e.g. https://www.pwc.com/us/en/library/data-science-and-analytics.html), analyses regarding the current jobs available - especially locally here in Denver - are hard to come by. The goal of this project was to find trends among currently available jobs and try to find some insights into the job market.
 
 # The Data:
-Using selenium and beautiful soup, two popular python packages for web scraping and web automation, two datasets were scraped; one from Indeed.com (n = 3969) and another from Linkedin.com (n = 3150).
+Using selenium and beautiful soup, two popular python packages for web scraping and web automation, two datasets were scraped; one from Indeed.com (n = 3969) and another from Linkedin.com (n = 3150). Each search looked at jobs that resulted from looking up 'Data Science'. This search term yielded the largest number of jobs from the search terms tested.
 
 ### Features from each dataset:
 | Indeed job features    | Linkedin job features  |
@@ -15,6 +15,17 @@ Using selenium and beautiful soup, two popular python packages for web scraping 
 | Easy apply feature     | Number of applicants   |
 | Company rating         | Full job description   |
 | Job summary            |                        |
+
+ Six states were selected as states that are hubs for data science jobs.
+
+ | States        |
+  ---------------
+ | Colorado      |
+ | California    |
+ | Florida       |
+ | New York      |
+ | Utah          |
+ | Washington    |
 
 ### Indeed web scraping process:
 The job summary from Indeed only included a few lines of the full job description. Because many Indeed jobs redirect you to the company's website for more information regarding the job, scraping that information would have required parsing several sites rather than just one. Linkedin, on the other hand, does not redirect you to the company's website and instead has the job summary accessible by clicking on each job.
@@ -61,3 +72,13 @@ The association between number of applicants and length of description is signif
 ![](imgs/linkedin_num_applicants_len_descrip_cleaned.png)
 
 It still looks like there is a small negative correlation between these two features. Let's test if this correlation is still significant even though we have decreased our sample size substantially. Once the jobs that had under 25 applicants as well as the jobs that had over 200 applicants were taken out, the correlation was no longer significant, *r*(802) = -.01, *p* = .68. Not only did the correlation become non-significant, but the effect size decreased as well. Interesting!
+
+Next, I wanted to find the top 15 companies that tended to post long job descriptions measured by the number of characters in the description.
+
+![](imgs/linkedin_top_companies_longest_descriptions.png)
+
+It looks like many of these long job postings were posted by the US government (e.g. Department of Navy, USDoD). These job postings likely include some sort of requirement of government clearance and thus will have more sections than most jobs do.
+
+Finally, I wanted to investigate which companies tended to have the largest number of data science jobs. These are companies that should be targetted if one is looking to get a job in data science due to the number of available positions.
+
+![](imgs/linkedin_num_postings_for_top_companies.png)
