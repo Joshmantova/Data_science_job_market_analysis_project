@@ -19,7 +19,7 @@ Using selenium and beautiful soup, two popular python packages for web scraping 
  Six states were selected as states that are hubs for data science jobs.
 
  | States        |
-  ---------------
+ | ------------- |
  | Colorado      |
  | California    |
  | Florida       |
