@@ -15,3 +15,4 @@ Using selenium and beautiful soup, two popular python packages for web scraping 
 | Easy apply feature     | Number of applicants   |
 | Company rating         | Full job description   |
 | Job summary            |                        |
+
