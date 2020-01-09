@@ -124,7 +124,7 @@ def graph_top10_companies(state_id):
     ax.barh(companies_state, jobs_state)
 
     ax.set_xlabel('Number of job postings')
-    ax.set_ylabel('Companies')
+    ax.set_ylabel('Companies', fontsize=80)
     ax.set_title(f'Number of job postings for each company on Linkedin in {state_id}')
     ax.tick_params(labelsize = 15)
     
