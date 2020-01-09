@@ -93,7 +93,7 @@ plt.savefig('../imgs/linkedin_top_companies_longest_descriptions.png')
 
 def graph_top10_companies(state_id, ax):
     df_all_state = df_all[df_all['State'] == state_id]
-    companies_state = df_all_state['Company'].value_counts().index[:5]
+    companies_state = df_all_state['Company'].value_counts().index[:10]
     companies_state = list(companies_state)
 
     for idx, comp in enumerate(companies_state):
@@ -117,13 +117,13 @@ def graph_top10_companies(state_id, ax):
         
     companies_state = companies_state[::-1]
 
-    jobs_state = df_all_state['Company'].value_counts().values[:5]
+    jobs_state = df_all_state['Company'].value_counts().values[:10]
     jobs_state = jobs_state[::-1]
 
     ax.barh(companies_state, jobs_state)
 
-    ax.set_xlabel('Number of job postings')
-    ax.set_ylabel('Companies')
+    ax.set_xlabel('Number of job postings', fontsize=20)
+    ax.set_ylabel('Companies', fontsize=20)
     ax.set_title(f'Number of job postings for each company on Linkedin in {state_id}')
     ax.tick_params(axis='both', labelsize=20)
 
