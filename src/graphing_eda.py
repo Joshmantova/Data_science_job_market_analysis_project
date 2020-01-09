@@ -119,14 +119,14 @@ def graph_top10_companies(state_id):
 
     jobs_state = df_all_state['Company'].value_counts().values[:10]
     jobs_state = jobs_state[::-1]
+    plt.rcParams.update({'font.size': 50})
 
     fig, ax = plt.subplots(figsize=(20,15))
     ax.barh(companies_state, jobs_state)
 
     ax.set_xlabel('Number of job postings')
-    ax.set_ylabel('Companies', fontsize=80)
+    ax.set_ylabel('Companies')
     ax.set_title(f'Number of job postings for each company on Linkedin in {state_id}')
-    ax.tick_params(labelsize = 15)
     
     plt.tight_layout()
     plt.savefig(f'../imgs/linkedin_top_companies_num_job_postings_per_{state_id}.png')
