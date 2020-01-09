@@ -95,7 +95,7 @@ def graph_top10_companies(state_id, ax):
     df_all_state = df_all[df_all['State'] == state_id]
     companies_state = df_all_state['Company'].value_counts().index[:5]
     companies_state = list(companies_state)
-    plt.rcParams.update({'font.size': 22})
+    plt.rcParams.update({'font.size': 30})
 
 
     for idx, comp in enumerate(companies_state):
