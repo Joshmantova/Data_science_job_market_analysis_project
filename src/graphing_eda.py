@@ -119,7 +119,7 @@ def graph_top10_companies(state_id):
 
     jobs_state = df_all_state['Company'].value_counts().values[:10]
     jobs_state = jobs_state[::-1]
-    plt.rcParams.update({'font.size': 50})
+    plt.rcParams.update({'font.size': 25})
 
     fig, ax = plt.subplots(figsize=(20,15))
     ax.barh(companies_state, jobs_state)
