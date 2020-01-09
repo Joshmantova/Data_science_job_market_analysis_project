@@ -95,7 +95,6 @@ def graph_top10_companies(state_id, ax):
     df_all_state = df_all[df_all['State'] == state_id]
     companies_state = df_all_state['Company'].value_counts().index[:5]
     companies_state = list(companies_state)
-    plt.rcParams.update({'font.size': 30})
 
 
     for idx, comp in enumerate(companies_state):
@@ -129,6 +128,7 @@ def graph_top10_companies(state_id, ax):
     ax.set_title(f'Number of job postings for each company on Linkedin in {state_id}')
 
 list_of_locs = ['CO', 'CA', 'FL', 'NY', 'UT', 'WA']
+plt.rcParams.update({'font.size': 30})
 
 fig, axs = plt.subplots(3, 2, figsize=(30,15))
 
