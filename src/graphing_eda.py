@@ -122,14 +122,14 @@ def graph_top10_companies(state_id, ax):
 
     ax.barh(companies_state, jobs_state)
 
-    ax.set_xlabel('Number of job postings', fontsize=25)
-    ax.set_ylabel('Companies', fontsize=25)
-    ax.set_title(f'Number of job postings for each company on Linkedin in {state_id}', fontsize=30)
-    ax.tick_params(axis='both', labelsize=25)
+    ax.set_xlabel('Number of job postings', fontsize=15)
+    ax.set_ylabel('Companies', fontsize=15)
+    ax.set_title(f'Number of job postings for each company on Linkedin in {state_id}', fontsize=20)
+    ax.tick_params(axis='both', labelsize=15)
 
 list_of_locs = ['CO', 'CA']
 
-fig, axs = plt.subplots(1, 2, figsize=(20,10))
+fig, axs = plt.subplots(1, 2, figsize=(23,7))
 for loc, ax in zip(list_of_locs, axs.flatten()):
     graph_top10_companies(loc, ax)
 
