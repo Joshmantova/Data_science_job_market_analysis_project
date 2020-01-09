@@ -129,7 +129,7 @@ def graph_top10_companies(state_id, ax):
 
 list_of_locs = ['CO', 'CA']
 
-fig, axs = plt.subplots(1, 2, figsize=(23,7))
+fig, axs = plt.subplots(1, 2, figsize=(17,5))
 for loc, ax in zip(list_of_locs, axs.flatten()):
     graph_top10_companies(loc, ax)
 
