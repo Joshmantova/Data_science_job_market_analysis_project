@@ -52,8 +52,6 @@ def get_state(x):
     elif 'WA' in x or 'Washington' in x or 'Seattle' in x:
         return 'WA'
 
-
-
 if __name__ == '__main__':
     #Concatenating indeed data
     df_CO = pd.read_csv('../Datasets/df_indeed_CO.csv', index_col=0)

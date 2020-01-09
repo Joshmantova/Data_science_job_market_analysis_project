@@ -4,15 +4,16 @@ from nltk.tokenize import RegexpTokenizer
 from nltk.stem import WordNetLemmatizer
 import pandas as pd
 
+
 def init_cleanning_classes():
     """
     Initiates cleaning classes from NLTK
 
-    :params: 
-    
+    :params:
+
     None
 
-    :returns: 
+    :returns:
 
     stopWords: Set of stopwords in English
 
@@ -24,6 +25,7 @@ def init_cleanning_classes():
     tokenizer_remove_punc = RegexpTokenizer(r'\w+')
     lemmatizer = WordNetLemmatizer()
     return stopWords, tokenizer_remove_punc, lemmatizer
+
 
 def get_list_of_descriptions(df, descrip_col_name):
     """
@@ -42,6 +44,7 @@ def get_list_of_descriptions(df, descrip_col_name):
     raw_description = df[descrip_col_name].values
     return raw_description
 
+
 def take_out_stopwords_punct(descrip_list, stop_words):
     """
     Removes stopwords and punctuation from list of descriptions
@@ -54,7 +57,8 @@ def take_out_stopwords_punct(descrip_list, stop_words):
 
     :returns:
 
-    word_list_no_stopwords_or_punct: List of words with stopwords removed, punctuation removed, and all lowercase
+    word_list_no_stopwords_or_punct: List of words with stopwords removed, 
+    punctuation removed, and all lowercase
     """
     no_punct_descrip_list = [tokenizer_remove_punc.tokenize(descrip) for descrip in descrip_list]
     word_list_no_stopwords_or_punct = []
@@ -63,6 +67,7 @@ def take_out_stopwords_punct(descrip_list, stop_words):
             if word.lower() not in stop_words:
                 word_list_no_stopwords_or_punct.append(word.lower())
     return word_list_no_stopwords_or_punct
+
 
 def lemmatize_word_list(word_list):
     """
@@ -79,9 +84,11 @@ def lemmatize_word_list(word_list):
     lemmatized_word_list = [lemmatizer.lemmatize(word) for word in word_list]
     return lemmatized_word_list
 
+
 def get_wordfreq_dict(word_list):
     """
-    Creates a dictionary from a word list in which the keys represent words and the values represent counts of those words
+    Creates a dictionary from a word list in which the keys 
+    represent words and the values represent counts of those words
 
     :params:
 
@@ -99,28 +106,37 @@ def get_wordfreq_dict(word_list):
             freq_dict[word] = 1
     return freq_dict
 
+
 def get_term_and_freq_lists(freq_dict):
     """
-    Creates two linked lists. One list represents the list of terms and the other list represents the corresponding counts of occurances.
-    Both lists are ordered such that the most frequently appearing words are first.
+    Creates two linked lists. One list represents the list of 
+    terms and the other list represents the 
+    corresponding counts of occurances.
+    Both lists are ordered such that the most 
+    frequently appearing words are first.
 
     :params:
 
-    freq_dict: Dictionary where the keys represent words and the values represent their frequencies
+    freq_dict: Dictionary where the keys represent words 
+    and the values represent their frequencies
 
     :returns:
 
-    terms: List of terms ordered by frequency counts. Highest counts appear first.
+    terms: List of terms ordered by frequency counts. 
+    Highest counts appear first.
 
     freq_counts: Counts of the occurances of those words
     """
-    sorted_freq_words = sorted(freq_dict.items(), key=lambda item: item[1], reverse=True)
+    sorted_freq_words = sorted(
+        freq_dict.items(), key=lambda item: item[1], reverse=True
+        )
     terms = []
     freq_counts = []
     for term, freq_count in sorted_freq_words:
         terms.append(term)
         freq_counts.append(freq_count)
     return terms, freq_counts
+
 
 if __name__ == '__main__':
     df_all = pd.read_csv('../Datasets/df_all_linkedin.csv')

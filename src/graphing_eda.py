@@ -19,7 +19,7 @@ ax.set_title('Length of Description for Linkedin Jobs That Include Senior / Juni
 plt.tight_layout()
 plt.savefig('../imgs/linkedin_sen_or_not_length_descrip.png')
 
-#
+#Relation Between Number of Applicants and Length of Description on Linkedin
 
 number_applied = df_all['num_applicants'].values
 length_of_descrip = df_all['Length_of_Description'].values
@@ -36,7 +36,7 @@ plt.legend()
 plt.tight_layout()
 plt.savefig('../imgs/linkedin_num_applicants_len_descrip.png')
 
-#
+#Relation Between Number of Applicants and Length of Description on Linkedin Cleaned
 
 df_cleaned_applicants = df_all[(df_all['num_applicants'] != 20) & (df_all['num_applicants'] != 200)]
 num_applied_clean = df_cleaned_applicants['num_applicants'].values
@@ -53,7 +53,7 @@ plt.legend()
 plt.tight_layout()
 plt.savefig('../imgs/linkedin_num_applicants_len_descrip_cleaned.png')
 
-#
+#Number of job postings for each company on Linkedin
 
 companies = df_all['Company'].value_counts().index[:15]
 companies = companies[::-1]
@@ -71,7 +71,7 @@ ax.set_title('Number of job postings for each company on Linkedin')
 plt.tight_layout()
 plt.savefig('../imgs/linkedin_num_postings_for_top_companies.png')
 
-#
+#15 Companies That Post The Longest Descriptions on Linkedin
 
 company_length_descrip = df_all.groupby('Company')['Length_of_Description'].mean().sort_values(ascending=False)
 companies = company_length_descrip.index[:15]
@@ -89,7 +89,7 @@ ax.set_title('15 Companies That Post The Longest Descriptions on Linkedin')
 plt.tight_layout()
 plt.savefig('../imgs/linkedin_top_companies_longest_descriptions.png')
 
-#
+#Number of job postings for each company on Linkedin in each state
 
 def graph_top10_companies(state_id, ax):
     df_all_state = df_all[df_all['State'] == state_id]
@@ -128,7 +128,6 @@ def graph_top10_companies(state_id, ax):
     ax.set_title(f'Number of job postings for each company on Linkedin in {state_id}')
 
 list_of_locs = ['CO', 'CA', 'FL', 'NY', 'UT', 'WA']
-plt.rcParams.update({'font.size': 30})
 
 fig, axs = plt.subplots(3, 2, figsize=(30,15))
 
