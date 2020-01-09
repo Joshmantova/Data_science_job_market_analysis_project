@@ -124,8 +124,8 @@ def graph_top10_companies(state_id, ax):
 
     ax.set_xlabel('Number of job postings', fontsize=20)
     ax.set_ylabel('Companies', fontsize=20)
-    ax.set_title(f'Number of job postings for each company on Linkedin in {state_id}')
-    ax.tick_params(axis='both', labelsize=20)
+    ax.set_title(f'Number of job postings for each company on Linkedin in {state_id}', fontsize=25)
+    ax.tick_params(axis='both', labelsize=25)
 
 list_of_locs = ['CO', 'CA', 'UT', 'WA']
 
