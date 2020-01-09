@@ -127,9 +127,9 @@ def graph_top10_companies(state_id, ax):
     ax.set_title(f'Number of job postings for each company on Linkedin in {state_id}', fontsize=30)
     ax.tick_params(axis='both', labelsize=25)
 
-list_of_locs = ['CO', 'CA', 'UT', 'WA']
+list_of_locs = ['CO', 'CA']
 
-fig, axs = plt.subplots(2, 2, figsize=(30,15))
+fig, axs = plt.subplots(1, 2, figsize=(30,15))
 for loc, ax in zip(list_of_locs, axs.flatten()):
     graph_top10_companies(loc, ax)
 
