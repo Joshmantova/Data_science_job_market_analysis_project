@@ -126,7 +126,7 @@ def graph_top10_companies(state_id):
     ax.set_xlabel('Number of job postings')
     ax.set_ylabel('Companies')
     ax.set_title(f'Number of job postings for each company on Linkedin in {state_id}')
-    ax.tick_params(labelsize = 20)
+    ax.tick_params(labelsize = 15)
     
     plt.tight_layout()
     plt.savefig(f'../imgs/linkedin_top_companies_num_job_postings_per_{state_id}.png')
