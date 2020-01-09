@@ -89,4 +89,10 @@ Looking across all states is nice for someone who doesn't know where they want t
 
 ![](imgs/linkedin_top_companies_num_job_postings_per_CO.png)
 
+![](imgs/linkedin_top_companies_num_job_postings_per_CA.png)
+
+![](imgs/linkedin_top_companies_num_job_postings_per_UT.png)
+
+
+
 In Colorado, where I'm most interested in searching, NREL and KPMG take the lead by a long shot. 
