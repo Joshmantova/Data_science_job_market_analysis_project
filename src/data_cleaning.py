@@ -52,8 +52,33 @@ def get_state(x):
     elif 'WA' in x or 'Washington' in x or 'Seattle' in x:
         return 'WA'
 
+
+
 if __name__ == '__main__':
-    df_all = pd.read_csv('../Datasets/df_all_linkedin.csv')
+    #Concatenating indeed data
+    df_CO = pd.read_csv('../Datasets/df_indeed_CO.csv', index_col=0)
+    df_CA = pd.read_csv('../Datasets/df_indeed_CA.csv', index_col=0)
+    df_NY = pd.read_csv('../Datasets/df_indeed_NY.csv', index_col=0)
+    df_WA = pd.read_csv('../Datasets/df_indeed_WA.csv', index_col=0)
+    df_UT = pd.read_csv('../Datasets/df_indeed_UT.csv', index_col=0)
+    df_FL = pd.read_csv('../Datasets/df_indeed_FL.csv', index_col=0)
+
+    df_all = pd.concat((df_CO, df_CA, df_NY, df_WA, df_UT, df_FL))
+
+    df_all.to_csv('../Datasets/df_all_indeed.csv')
+
+    #Concatenating linkedin data
+    df_CA = pd.read_csv('../Datasets/df_linkedin_California.csv')
+    df_CO = pd.read_csv('../Datasets/df_linkedin_Colorado.csv')
+    df_FL = pd.read_csv('../Datasets/df_linkedin_Florida.csv')
+    df_NY = pd.read_csv('../Datasets/df_linkedin_New%20york.csv')
+    df_UT = pd.read_csv('../Datasets/df_linkedin_Utah.csv')
+    df_WA = pd.read_csv('../Datasets/df_linkedin_Washington.csv')
+
+    df_all = pd.concat((df_CO, df_CA, df_NY, df_WA, df_UT, df_FL))
+    df_all.to_csv('../Datasets/df_all_linkedin.csv')
+
+    #Feature engineering
     df_all['Length_of_Description'] = df_all['Description'].apply(get_length_of_description)
     df_all['Senior'] = df_all['Job_Title'].apply(senior_or_not)
     df_all['Junior'] = df_all['Job_Title'].apply(junior_or_not)

@@ -1,5 +1,5 @@
 from selenium import webdriver
-import selenium_linkedin_jobs_test as sljt
+import selenium_linkedin_jobs_scrape as sljs
 import Selenium_and_BS4_linkedin as sbs4
 import pandas as pd
 from selenium.common.exceptions import NoSuchElementException
@@ -17,20 +17,11 @@ if __name__ == '__main__':
         print(f'Starting to scrape {loc} jobs from Linkedin')
         search_result_url = f"https://www.linkedin.com/jobs/search?keywords=Data%20Science&location={loc}&trk=guest_job_search_jobs-search-bar_search-submit&redirect=false&position=1&pageNum=0"
         driver.get(search_result_url)
-        sljt.see_more_jobs(driver, num_times=2)
+        sljs.see_more_jobs(driver, num_times=2)
 
         time.sleep(delay)
 
         job_titles, company_names, locations, num_applicants, descriptions = sbs4.scrape_all_from_linkedin(driver)
-
-
-        # try:
-        #     job_titles, company_names, locations, num_applicants, descriptions = sljt.scrape_all_from_linkedin(search_result_url, driver)
-        # except NoSuchElementException:
-        #     print('There was a No Such Element Exception error!! Waiting two minutes.')
-        #     time.sleep(120)
-        #     print('Continuing')
-        #     job_titles, company_names, locations, num_applicants, descriptions = sljt.scrape_all_from_linkedin(search_result_url, driver)
 
         df = pd.DataFrame()
         df['Job_Title'] = job_titles
