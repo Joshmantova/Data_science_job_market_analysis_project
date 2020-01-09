@@ -91,7 +91,7 @@ plt.savefig('../imgs/linkedin_top_companies_longest_descriptions.png')
 
 #Number of job postings for each company on Linkedin in each state
 
-def graph_top10_companies(state_id, ax):
+def graph_top10_companies(state_id):
     df_all_state = df_all[df_all['State'] == state_id]
     companies_state = df_all_state['Company'].value_counts().index[:10]
     companies_state = list(companies_state)
@@ -120,18 +120,23 @@ def graph_top10_companies(state_id, ax):
     jobs_state = df_all_state['Company'].value_counts().values[:10]
     jobs_state = jobs_state[::-1]
 
+    fig, ax = plt.subplots(figsize=(20,15))
     ax.barh(companies_state, jobs_state)
 
-    ax.set_xlabel('Number of job postings', fontsize=15)
-    ax.set_ylabel('Companies', fontsize=15)
-    ax.set_title(f'Number of job postings for each company on Linkedin in {state_id}', fontsize=7)
-    ax.tick_params(axis='both', labelsize=15)
+    ax.set_xlabel('Number of job postings')
+    ax.set_ylabel('Companies')
+    ax.set_title(f'Number of job postings for each company on Linkedin in {state_id}')
+    
+    plt.tight_layout()
+    plt.savefig(f'../imgs/linkedin_top_companies_num_job_postings_per_{state_id}.png')
+    # ax.tick_params(axis='both')
 
-list_of_locs = ['CO', 'CA']
+list_of_locs = ['CO', 'CA', 'FL', 'NY', 'UT', 'WA']
 
-fig, axs = plt.subplots(1, 2, figsize=(15,5))
-for loc, ax in zip(list_of_locs, axs.flatten()):
-    graph_top10_companies(loc, ax)
+for loc in list_of_locs:
+    graph_top10_companies(loc)
 
-plt.tight_layout()
-plt.savefig('../imgs/linkedin_top_companies_num_job_postings_per_state.png')
+# for loc, ax in zip(list_of_locs, axs.flatten()):
+#     graph_top10_companies(loc, ax)
+
+# plt.tight_layout()

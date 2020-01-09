@@ -87,6 +87,6 @@ Across all states, Amazon had the largest number of jobs by quite a long shot. T
 
 Looking across all states is nice for someone who doesn't know where they want to work but what about the people who have a state targetted and want to know what the job market is looking like in that state? Let's create a series of graphs that look at the top 10 companies that had posted the largest number of jobs for each of the six states.
 
-![](imgs/linkedin_top_companies_num_job_postings_per_state.png)
+![](imgs/linkedin_top_companies_num_job_postings_per_CO.png)
 
 In Colorado, where I'm most interested in searching, NREL and KPMG take the lead by a long shot. 
