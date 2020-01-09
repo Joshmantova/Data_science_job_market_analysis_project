@@ -2,8 +2,6 @@ from bs4 import BeautifulSoup
 from selenium import webdriver
 import time
 import pandas as pd
-from selenium.common.exceptions import NoSuchElementException
-from selenium.common.exceptions import StaleElementReferenceException
 import numpy as np
 
 def see_more_jobs(driver, num_times=40):
@@ -84,29 +82,31 @@ def scrape_all_from_linkedin(driver):
     return job_titles, company_names, locations, num_applicants, descriptions
 
 if __name__ == '__main__':
-    search_result_url = 'https://www.linkedin.com/jobs/search?keywords=Data%20Science&location=Colorado&trk=guest_job_search_jobs-search-bar_search-submit&redirect=false&position=1&pageNum=0'
-
     driver = webdriver.Chrome()
-    driver.get(search_result_url)
+    driver.implicitly_wait(5)
+    delays = np.arange(2,5)
+    delay = np.random.choice(delays)
 
-    see_more_jobs(driver, num_times=5)
+    list_of_locations = ['Colorado','California', 'New%20york', 'Washington', 'Utah', 'Florida']
+    for loc in list_of_locations:
+        print(f'Starting to scrape {loc} jobs from Linkedin')
+        search_result_url = f"https://www.linkedin.com/jobs/search?keywords=Data%20Science&location={loc}&trk=guest_job_search_jobs-search-bar_search-submit&redirect=false&position=1&pageNum=0"
+        driver.get(search_result_url)
+        see_more_jobs(driver, num_times=20)
 
-    job_titles, company_names, locations, num_applicants, descriptions = scrape_all_from_linkedin(driver)
+        time.sleep(delay)
 
-    df = pd.DataFrame()
-    df['Job_Title'] = job_titles
-    df['Company'] = company_names
-    df['Location'] = locations
-    df['Number_of_Applicants'] = num_applicants
-    df['Description'] = descriptions
+        job_titles, company_names, locations, num_applicants, descriptions = scrape_all_from_linkedin(driver)
 
-    print(df)
+        df = pd.DataFrame()
+        df['Job_Title'] = job_titles
+        df['Company'] = company_names
+        df['Location'] = locations
+        df['Number_of_Applicants'] = num_applicants
+        df['Description'] = descriptions
 
-    """
-    <h2 class="topcard__title">Data Science Journalist</h2>
-    class="topcard__org-name-link"
-    <span class="topcard__flavor topcard__flavor--bullet">Broomfield, CO, US</span>
-    <span class="topcard__flavor--metadata topcard__flavor--bullet num-applicants__caption">90 applicants</span>
-    <figcaption class="num-applicants__caption">Be among the first 25 applicants</figcaption>
-    <div class="description__text description__text--rich">
-    """
+        df.to_csv(f'df_linkedin_{loc}.csv')
+        print(f'{loc} scraping is done!')
+        time.sleep(60)
+    print('Finished scraping all locations!!!!')
+    driver.close()
