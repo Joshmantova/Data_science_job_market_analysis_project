@@ -12,7 +12,6 @@ def init_cleanning_classes():
     
     None
 
-
     :returns: 
 
     stopWords: Set of stopwords in English
