@@ -5,7 +5,7 @@ from nltk.stem import WordNetLemmatizer
 import pandas as pd
 
 
-def init_cleanning_classes():
+def init_cleaning_classes():
     """
     Initiates cleaning classes from NLTK
 
@@ -138,12 +138,14 @@ def get_term_and_freq_lists(freq_dict):
 
 if __name__ == '__main__':
     df_all = pd.read_csv('../Datasets/df_all_linkedin.csv')
-    stopWords, tokenizer_remove_punc, lemmatizer = init_cleanning_classes()
+    stopWords, tokenizer_remove_punc, lemmatizer = init_cleaning_classes()
     descrip_list = get_list_of_descriptions(df_all, 'Description')
     word_list_no_stopwords_or_punct = take_out_stopwords_punct(descrip_list, stopWords)
     lemmatized_cleaned_word_list = lemmatize_word_list(word_list_no_stopwords_or_punct)
     word_freq_dict = get_wordfreq_dict(lemmatized_cleaned_word_list)
     terms, freq_counts = get_term_and_freq_lists(word_freq_dict)
+
+    #Getting rank of certain terms
 
     python_index = terms.index('python')
     r_index = terms.index('r')
@@ -158,18 +160,20 @@ if __name__ == '__main__':
     statistics_index = terms.index('statistic')
     bi_index = terms.index('bi')
 
-    # print(f'Python index is: {python_index}')
-    # print(f'r index is: {r_index}')
-    # print(f'spark index is: {spark_index}')
-    # print(f'spss index is: {spss_index}')
-    # print(f'sql index is: {sql_index}')
-    # print(f'pandas index is: {panda_index}')
-    # print(f'numpy index is: {numpy_index}')
-    # print(f'cloud index is: {cloud_index}')
-    # print(f'docker index is: {docker_index}')
-    # print(f'ml index is: {ml_index}')
-    # print(f'statistics index is: {statistics_index}')
-    # print(f'bi index is: {bi_index}')
+    print(f'Python index is: {python_index}')
+    print(f'r index is: {r_index}')
+    print(f'spark index is: {spark_index}')
+    print(f'spss index is: {spss_index}')
+    print(f'sql index is: {sql_index}')
+    print(f'pandas index is: {panda_index}')
+    print(f'numpy index is: {numpy_index}')
+    print(f'cloud index is: {cloud_index}')
+    print(f'docker index is: {docker_index}')
+    print(f'ml index is: {ml_index}')
+    print(f'statistics index is: {statistics_index}')
+    print(f'bi index is: {bi_index}')
+
+    #Getting the actual frequency count of those terms
 
     print(freq_counts[54])
     print(freq_counts[71])
