@@ -85,14 +85,27 @@ Finally, I wanted to investigate which companies tended to have the largest numb
 
 Across all states, Amazon had the largest number of jobs by quite a long shot. The runner up, The Job Network, is not a company hiring but rather another job searching website. I'm sure that Linkedin probably isn't too happy with another job searching site posting on their site. However, it seems like The Job Network has a large number of data science jobs.
 
-Looking across all states is nice for someone who doesn't know where they want to work but what about the people who have a state targetted and want to know what the job market is looking like in that state? Let's create a series of graphs that look at the top 10 companies that had posted the largest number of jobs for each of the six states.
+Looking across all states is nice for someone who doesn't know where they want to work but what about the people who have a state targetted and want to know what the job market is looking like in that state? Let's create a series of graphs that look at the top 10 companies that had posted the largest number of jobs for a couple of the states.
 
 ![](imgs/linkedin_top_companies_num_job_postings_per_CO.png)
 
-![](imgs/linkedin_top_companies_num_job_postings_per_CA.png)
+In Colorado, where I'm most interested in searching, NREL and KPMG take the lead by a long shot. 
 
 ![](imgs/linkedin_top_companies_num_job_postings_per_UT.png)
 
+Interestingly enough, in Utah, the LDS church is hiring a lot of data scientists. It seems like most of their jobs involve investigating people's ancestry.
 
-
-In Colorado, where I'm most interested in searching, NREL and KPMG take the lead by a long shot. 
+| Terms     |   Order     | Frequency  |
+|-----------|-------------|------------|
+| Python    |     54      |     2538   |
+| Sql       |     71      |     2335   |
+| Statistics|     82      |     2158   |
+| R         |     107     |     1811   |
+| Cloud     |     109     |     1796   |
+| Ml        |     203     |     1139   |
+| Spark     |     314     |     830    |
+| BI        |     340     |     733    |
+| Pandas    |     1359    |     135    |
+| Docker    |     1396    |     130    |
+| Numpy     |     1984    |     73     |
+| SPSS      |     2270    |     58     |

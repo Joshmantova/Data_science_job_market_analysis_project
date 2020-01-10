@@ -127,9 +127,7 @@ def get_term_and_freq_lists(freq_dict):
 
     freq_counts: Counts of the occurances of those words
     """
-    sorted_freq_words = sorted(
-        freq_dict.items(), key=lambda item: item[1], reverse=True
-        )
+    sorted_freq_words = sorted(freq_dict.items(), key=lambda item: item[1], reverse=True)
     terms = []
     freq_counts = []
     for term, freq_count in sorted_freq_words:
@@ -147,4 +145,41 @@ if __name__ == '__main__':
     word_freq_dict = get_wordfreq_dict(lemmatized_cleaned_word_list)
     terms, freq_counts = get_term_and_freq_lists(word_freq_dict)
 
-    print(terms.index('sql'))
+    python_index = terms.index('python')
+    r_index = terms.index('r')
+    spark_index = terms.index('spark')
+    spss_index = terms.index('spss')
+    sql_index = terms.index('sql')
+    panda_index = terms.index('panda')
+    numpy_index = terms.index('numpy')
+    cloud_index = terms.index('cloud')
+    docker_index = terms.index('docker')
+    ml_index = terms.index('ml')
+    statistics_index = terms.index('statistic')
+    bi_index = terms.index('bi')
+
+    # print(f'Python index is: {python_index}')
+    # print(f'r index is: {r_index}')
+    # print(f'spark index is: {spark_index}')
+    # print(f'spss index is: {spss_index}')
+    # print(f'sql index is: {sql_index}')
+    # print(f'pandas index is: {panda_index}')
+    # print(f'numpy index is: {numpy_index}')
+    # print(f'cloud index is: {cloud_index}')
+    # print(f'docker index is: {docker_index}')
+    # print(f'ml index is: {ml_index}')
+    # print(f'statistics index is: {statistics_index}')
+    # print(f'bi index is: {bi_index}')
+
+    print(freq_counts[54])
+    print(freq_counts[71])
+    print(freq_counts[82])
+    print(freq_counts[107])
+    print(freq_counts[109])
+    print(freq_counts[203])
+    print(freq_counts[314])
+    print(freq_counts[340])
+    print(freq_counts[1359])
+    print(freq_counts[1396])
+    print(freq_counts[1984])
+    print(freq_counts[2270])               
