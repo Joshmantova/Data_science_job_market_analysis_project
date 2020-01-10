@@ -6,7 +6,7 @@ According to Glassdoor.com, a reputable job review website, data science has bee
 # The Data:
 Using selenium and beautiful soup, two popular python packages for web scraping and web automation, two datasets were scraped; one from Indeed.com (n = 3969) and another from Linkedin.com (n = 3150). Each search looked at jobs that resulted from looking up 'Data Science'. This search term yielded the largest number of jobs from the search terms tested.
 
-### Features from each dataset:
+### Features From Each Dataset:
 | Indeed job features    | Linkedin job features  |
 | ---------------------- | ---------------------- |
 | Company name           | Company name           |
@@ -95,7 +95,17 @@ In Colorado, where I'm most interested in searching, NREL and KPMG take the lead
 
 Interestingly enough, in Utah, the LDS church is hiring a lot of data scientists. It seems like most of their jobs involve investigating people's ancestry.
 
-| Terms     |   Order     | Frequency  |
+# Natural Language Processing:
+
+In order to go further into analyzing the descriptions, natural language processing was utilized. Specifically, I wanted to see which skills were most frequently mentioned in the descriptions. In order to accomplish this goal, a list of descriptions was created from the dataframe. Each description was looped over in order to remove stopwords and punctuation. Each description was then lemmatized which means that words that are similar are grouped together. The lemmatization process would change 'words' to 'word' and 'running' to 'run' which is essentially just transforming words into their stems. Additionally, lemmatization will change words such as 'better' to 'good' which essentially groups words semantically as well. This allows for a better representation of counts because words that are highly similar will be counted regardless of tense or small differences in wording.
+
+After lemmatizing the descriptions, they were transformed into a python dictionary in which the keys represented each unique word and the value represented the count of that word across all Linkedin descriptions. Finally, two linked lists were created - one which consisted of every unique word sorted in descending order by their counts across the descriptions and another list which consisted of the corresponding count of that word.
+
+After creating these lists, I was able to find the index of certain terms of interest which represented the ranked order of that term. If a term was ranked first, it was the most frequent word across all the descriptions.
+
+A table of the terms of interest as well as their associated rank order and the frequency of that term is shown below:
+
+| Terms     | Rank Order  |  Frequency |
 |-----------|-------------|------------|
 | Python    |     54      |     2538   |
 | Sql       |     71      |     2335   |
@@ -109,3 +119,7 @@ Interestingly enough, in Utah, the LDS church is hiring a lot of data scientists
 | Docker    |     1396    |     130    |
 | Numpy     |     1984    |     73     |
 | SPSS      |     2270    |     58     |
+
+Many of the high ranked terms, such as data which was ranked first, is not shown here because the focus was on popular skills and tools needed by data scientists. This table can be used by prospective data scientists to help them understand what tools they will need to be most familiar with in order to align well with career requirements.
+
+# Conclusion:
