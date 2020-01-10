@@ -97,7 +97,9 @@ Interestingly enough, in Utah, the LDS church is hiring a lot of data scientists
 
 # Natural Language Processing:
 
-In order to go further into analyzing the descriptions, natural language processing was utilized. Specifically, I wanted to see which skills were most frequently mentioned in the descriptions. In order to accomplish this goal, a list of descriptions was created from the dataframe. Each description was looped over in order to remove stopwords and punctuation. Each description was then lemmatized which means that words that are similar are grouped together. The lemmatization process would change 'words' to 'word' and 'running' to 'run' which is essentially just transforming words into their stems. Additionally, lemmatization will change words such as 'better' to 'good' which essentially groups words semantically as well. This allows for a better representation of counts because words that are highly similar will be counted regardless of tense or small differences in wording.
+In order to go further into analyzing the descriptions, natural language processing was utilized. Specifically, I wanted to see which skills were most frequently mentioned in the descriptions. In order to accomplish this goal, a list of descriptions was created from the dataframe. Each description was looped over in order to remove stopwords and punctuation. 
+
+Each description was then lemmatized which means that words that are similar are grouped together. The lemmatization process would change 'words' to 'word' and 'running' to 'run' which is essentially just transforming words into their stems. Additionally, lemmatization will change words such as 'better' to 'good' which essentially groups words semantically as well. This allows for a better representation of counts because words that are highly similar will be counted regardless of tense or small differences in wording.
 
 After lemmatizing the descriptions, they were transformed into a python dictionary in which the keys represented each unique word and the value represented the count of that word across all Linkedin descriptions. Finally, two linked lists were created - one which consisted of every unique word sorted in descending order by their counts across the descriptions and another list which consisted of the corresponding count of that word.
 
@@ -120,6 +122,22 @@ A table of the terms of interest as well as their associated rank order and the 
 | Numpy     |     1984    |     73     |
 | SPSS      |     2270    |     58     |
 
-Many of the high ranked terms, such as data which was ranked first, is not shown here because the focus was on popular skills and tools needed by data scientists. This table can be used by prospective data scientists to help them understand what tools they will need to be most familiar with in order to align well with career requirements.
+Many of the high ranked terms, such as 'data' which was ranked first, is not shown here because the focus was on popular skills and tools needed by data scientists. This table can be used by prospective data scientists to help them understand what tools they will need to be most familiar with in order to align well with career requirements.
 
 # Conclusion:
+In conclusion, there weren't many associations between the features I investigated. Having said that, even non-significant results can be interesting because not finding evidence of these assocations is telling in and of itself. Let's go back over some of the highlights of this project.
+
+TLDR:
+
+* Web scraping is fun and in Python can be very versitile
+    * Also it might drive you crazy
+* No association between job level (senior, junior, or neither) and length of description
+* Small assocation between length of description and number of applicants
+    * No evidence was found to suggest that people prefer jobs with shorter descriptions
+    * This small association dropped out when the data was cleaned properly
+* We saw many of the companies that post the highest number of jobs
+    * Should expect the highest probability of getting jobs at those companies holding subset of data science constant
+* We saw the companies that post the highest number of jobs in both Colorado and Utah
+    * Learned that Mormons love data scientists
+    * Saw the companies in Colorado that we might want to target if we are looking for a career
+* Finally, we saw 
