@@ -95,17 +95,17 @@ In Colorado, where I'm most interested in searching, NREL and KPMG take the lead
 
 Interestingly enough, in Utah, the LDS church is hiring a lot of data scientists. It seems like most of their jobs involve investigating people's ancestry.
 
-| Terms     |   Order     | Frequency  |
-|-----------|-------------|------------|
-| Python    |     54      |     2538   |
-| Sql       |     71      |     2335   |
-| Statistics|     82      |     2158   |
-| R         |     107     |     1811   |
-| Cloud     |     109     |     1796   |
-| Ml        |     203     |     1139   |
-| Spark     |     314     |     830    |
-| BI        |     340     |     733    |
-| Pandas    |     1359    |     135    |
-| Docker    |     1396    |     130    |
-| Numpy     |     1984    |     73     |
-| SPSS      |     2270    |     58     |
+            | Terms     |   Order     | Frequency  |
+            |-----------|-------------|------------|
+            | Python    |     54      |     2538   |
+            | Sql       |     71      |     2335   |
+            | Statistics|     82      |     2158   |
+            | R         |     107     |     1811   |
+            | Cloud     |     109     |     1796   |
+            | Ml        |     203     |     1139   |
+            | Spark     |     314     |     830    |
+            | BI        |     340     |     733    |
+            | Pandas    |     1359    |     135    |
+            | Docker    |     1396    |     130    |
+            | Numpy     |     1984    |     73     |
+            | SPSS      |     2270    |     58     |
