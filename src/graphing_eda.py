@@ -61,7 +61,7 @@ companies = companies[::-1]
 jobs = df_all['Company'].value_counts().values[:15]
 jobs = jobs[::-1]
 
-fig, ax = plt.subplots(figsize=(20,10))
+fig, ax = plt.subplots(figsize=(15,10))
 plt.rcParams.update({'font.size': 15})
 
 ax.barh(companies, jobs)
@@ -137,7 +137,3 @@ list_of_locs = ['CO', 'CA', 'FL', 'NY', 'UT', 'WA']
 for loc in list_of_locs:
     graph_top10_companies(loc)
 
-# for loc, ax in zip(list_of_locs, axs.flatten()):
-#     graph_top10_companies(loc, ax)
-
-# plt.tight_layout()
