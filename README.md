@@ -105,7 +105,7 @@ After creating these lists, I was able to find the index of certain terms of int
 
 A table of the terms of interest as well as their associated rank order and the frequency of that term is shown below:
 
-| Terms     | Rank Order  | Frequency  |
+|Terms      |Rank Order   |Frequency   |
 |-----------|-------------|------------|
 | Python    |     54      |     2538   |
 | SQL       |     71      |     2335   |
