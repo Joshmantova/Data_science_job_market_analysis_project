@@ -24,7 +24,7 @@ plt.savefig('../imgs/linkedin_sen_or_not_length_descrip.png')
 number_applied = df_all['num_applicants'].values
 length_of_descrip = df_all['Length_of_Description'].values
 
-fig, ax = plt.subplots()
+fig, ax = plt.subplots(figsize = (13,9))
 
 ax.scatter(number_applied, length_of_descrip)
 ax.set_xlabel('Number of Applicants')
@@ -41,7 +41,7 @@ plt.savefig('../imgs/linkedin_num_applicants_len_descrip.png')
 df_cleaned_applicants = df_all[(df_all['num_applicants'] != 20) & (df_all['num_applicants'] != 200)]
 num_applied_clean = df_cleaned_applicants['num_applicants'].values
 length_of_descrip = df_cleaned_applicants['Length_of_Description'].values
-fig, ax = plt.subplots(figsize=(15,12))
+fig, ax = plt.subplots(figsize=(13,9))
 
 ax.scatter(num_applied_clean, length_of_descrip)
 ax.set_xlabel('Number of Applicants')
@@ -61,8 +61,8 @@ companies = companies[::-1]
 jobs = df_all['Company'].value_counts().values[:15]
 jobs = jobs[::-1]
 
-fig, ax = plt.subplots(figsize=(15,10))
-plt.rcParams.update({'font.size': 15})
+fig, ax = plt.subplots(figsize=(13,9))
+# plt.rcParams.update({'font.size': 15})
 
 ax.barh(companies, jobs)
 
@@ -81,7 +81,7 @@ avg_len_descrip = company_length_descrip.values[:15]
 companies = companies[::-1]
 avg_len_descrip = avg_len_descrip[::-1]
 
-fig, ax = plt.subplots(figsize = (20,10))
+fig, ax = plt.subplots(figsize = (13,9))
 ax.barh(companies, avg_len_descrip)
 
 ax.set_xlabel('Average Length of Descriptions')
