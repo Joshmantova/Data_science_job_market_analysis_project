@@ -24,7 +24,7 @@ plt.savefig('../imgs/linkedin_sen_or_not_length_descrip.png')
 number_applied = df_all['num_applicants'].values
 length_of_descrip = df_all['Length_of_Description'].values
 
-fig, ax = plt.subplots(figsize=(15,12))
+fig, ax = plt.subplots()
 
 ax.scatter(number_applied, length_of_descrip)
 ax.set_xlabel('Number of Applicants')
