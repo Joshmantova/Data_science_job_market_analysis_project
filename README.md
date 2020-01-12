@@ -27,7 +27,7 @@ Using selenium and beautiful soup, two popular python packages for web scraping 
  | Utah          |
  | Washington    |
 
-<div>
+<!-- <div>
 <style scoped>
     .dataframe tbody tr th:only-of-type {
         vertical-align: middle;
@@ -40,7 +40,7 @@ Using selenium and beautiful soup, two popular python packages for web scraping 
     .dataframe thead th {
         text-align: right;
     }
-</style>
+</style> -->
 <table border="1" class="dataframe">
   <thead>
     <tr style="text-align: right;">
