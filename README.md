@@ -72,6 +72,7 @@ Using selenium and beautiful soup, two popular python packages for web scraping 
 ### Example of Linkedin job:
 ![](imgs/Example_of_linkedin_job.png)
 
+Example of html:
 
 ![](imgs/Example_linkedin_job_html.png)
 
