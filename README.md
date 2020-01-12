@@ -74,7 +74,7 @@ Using selenium and beautiful soup, two popular python packages for web scraping 
 
 Example of html:
 
-![](imgs/Example_linkedin_job_html.png)
+![](imgs/Example_of_linkedin_job_html.png)
 
 ### Indeed web scraping process:
 The job summary from Indeed only included a few lines of the full job description. Because many Indeed jobs redirect you to the company's website for more information regarding the job, scraping that information would have required parsing several sites rather than just one. Linkedin, on the other hand, does not redirect you to the company's website and instead has the job summary accessible by clicking on each job.
