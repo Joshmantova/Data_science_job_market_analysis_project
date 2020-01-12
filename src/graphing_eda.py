@@ -8,7 +8,7 @@ df_all = pd.read_csv('../Datasets/df_all_linkedin.csv')
 len_descrip_sen = df_all.groupby('Senior_Junior_or_not').mean()['Length_of_Description'].values
 senior_junior_or_not = df_all.groupby('Senior_Junior_or_not').mean()['Length_of_Description'].index
 
-fig, ax = plt.subplots(figsize = (13,10))
+fig, ax = plt.subplots(figsize = (7,5))
 
 ax.bar(senior_junior_or_not, len_descrip_sen)
 ax.set_xlabel('Senior / Junior Included in Job title or not')
@@ -120,7 +120,7 @@ def graph_top10_companies(state_id):
 
     jobs_state = df_all_state['Company'].value_counts().values[:10]
     jobs_state = jobs_state[::-1]
-    plt.rcParams.update({'font.size': 15})
+    # plt.rcParams.update({'font.size': 15})
 
     fig, ax = plt.subplots(figsize=(15,10))
     ax.barh(companies_state, jobs_state)

@@ -140,4 +140,4 @@ TLDR:
 * We saw the companies that post the highest number of jobs in both Colorado and Utah
     * Learned that Mormons love data scientists
     * Saw the companies in Colorado that we might want to target if we are looking for a career
-* Finally, we saw 
+* Finally, we saw some common skills and tools used in data science and saw where they rank in their occurance across the descriptions
