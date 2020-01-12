@@ -27,20 +27,8 @@ Using selenium and beautiful soup, two popular python packages for web scraping 
  | Utah          |
  | Washington    |
 
-<!-- <div>
-<style scoped>
-    .dataframe tbody tr th:only-of-type {
-        vertical-align: middle;
-    }
+### Example of Linkedin data:
 
-    .dataframe tbody tr th {
-        vertical-align: top;
-    }
-
-    .dataframe thead th {
-        text-align: right;
-    }
-</style> -->
 <table border="1" class="dataframe">
   <thead>
     <tr style="text-align: right;">
@@ -80,6 +68,9 @@ Using selenium and beautiful soup, two popular python packages for web scraping 
   </tbody>
 </table>
 </div>
+
+### Example of Linkedin job:
+![](imgs/Example_of_linkedin_job.png)
 
 ### Indeed web scraping process:
 The job summary from Indeed only included a few lines of the full job description. Because many Indeed jobs redirect you to the company's website for more information regarding the job, scraping that information would have required parsing several sites rather than just one. Linkedin, on the other hand, does not redirect you to the company's website and instead has the job summary accessible by clicking on each job.
