@@ -62,7 +62,7 @@ jobs = df_all['Company'].value_counts().values[:15]
 jobs = jobs[::-1]
 
 fig, ax = plt.subplots(figsize=(15,10))
-plt.rcParams.update({'font.size': 15})
+# plt.rcParams.update({'font.size': 15})
 
 ax.barh(companies, jobs)
 
