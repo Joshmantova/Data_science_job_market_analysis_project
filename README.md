@@ -27,6 +27,60 @@ Using selenium and beautiful soup, two popular python packages for web scraping 
  | Utah          |
  | Washington    |
 
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Job_Title</th>
+      <th>Company</th>
+      <th>Location</th>
+      <th>Number_of_Applicants</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>0</td>
+      <td>Data Acquisition Developer</td>
+      <td>ABB</td>
+      <td>Broomfield, CO, US</td>
+      <td>Be among the first 25 applicants</td>
+      <td>Join ABB and work in a team that is dedicated ...</td>
+    </tr>
+    <tr>
+      <td>1</td>
+      <td>DATA SCIENTIST MANAGER</td>
+      <td>Pilgrim's</td>
+      <td>Greeley, CO, US</td>
+      <td>Be among the first 25 applicants</td>
+      <td>Pilgrim’s is the second largest chicken produc...</td>
+    </tr>
+    <tr>
+      <td>2</td>
+      <td>Data Scientist – Logistics Optimization Algori...</td>
+      <td>ShaleApps</td>
+      <td>Denver, CO, US</td>
+      <td>Be among the first 25 applicants</td>
+      <td>Location: Denver, CO – Relocation Offered. Rem...</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+
 ### Indeed web scraping process:
 The job summary from Indeed only included a few lines of the full job description. Because many Indeed jobs redirect you to the company's website for more information regarding the job, scraping that information would have required parsing several sites rather than just one. Linkedin, on the other hand, does not redirect you to the company's website and instead has the job summary accessible by clicking on each job.
 
