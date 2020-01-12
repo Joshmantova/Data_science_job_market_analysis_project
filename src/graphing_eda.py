@@ -8,7 +8,7 @@ df_all = pd.read_csv('../Datasets/df_all_linkedin.csv')
 len_descrip_sen = df_all.groupby('Senior_Junior_or_not').mean()['Length_of_Description'].values
 senior_junior_or_not = df_all.groupby('Senior_Junior_or_not').mean()['Length_of_Description'].index
 
-fig, ax = plt.subplots()
+fig, ax = plt.subplots(figsize=(5,5))
 
 ax.bar(senior_junior_or_not, len_descrip_sen)
 ax.set_xlabel('Senior / Junior Included in Job title or not')
